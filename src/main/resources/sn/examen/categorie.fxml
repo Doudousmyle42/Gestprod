@@ -1,14 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="CONTROLLER_NAME"
-            prefHeight="400.0" prefWidth="600.0">
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="sn.examen.controller.CategorieController"
+      spacing="10" style="-fx-padding: 20;">
 
-</AnchorPane>
+    <Label text="Gestion des Categories"
+           style="-fx-font-size: 22px; -fx-font-weight: bold;"/>
+
+    <!-- Formulaire -->
+    <HBox spacing="10">
+        <TextField fx:id="libelleField" promptText="Libelle categorie" prefWidth="250"/>
+    </HBox>
+
+    <!-- Boutons CRUD -->
+    <HBox spacing="10">
+        <Button text="Ajouter"    onAction="#ajouter"
+                style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+        <Button text="Modifier"   onAction="#modifier"
+                style="-fx-background-color: #2196F3; -fx-text-fill: white;"/>
+        <Button text="Supprimer"  onAction="#supprimer"
+                style="-fx-background-color: #f44336; -fx-text-fill: white;"/>
+        <Button text="Actualiser" onAction="#actualiser"
+                style="-fx-background-color: #FF9800; -fx-text-fill: white;"/>
+    </HBox>
+
+    <!-- Tableau -->
+    <TableView fx:id="categorieTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colId"      text="ID"      prefWidth="80"/>
+            <TableColumn fx:id="colLibelle" text="Libelle" prefWidth="400"/>
+        </columns>
+    </TableView>
+
+</VBox>
