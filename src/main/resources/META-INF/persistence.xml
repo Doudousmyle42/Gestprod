@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.2"
              xmlns="http://xmlns.jcp.org/xml/ns/persistence"
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -7,7 +8,6 @@
     <persistence-unit name="examPU" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
-        <!-- Entites avec le BON package sn.examen -->
         <class>sn.examen.model.Categorie</class>
         <class>sn.examen.model.Produit</class>
         <class>sn.examen.model.Utilisateur</class>
@@ -17,12 +17,13 @@
                       value="org.postgresql.Driver"/>
             <property name="javax.persistence.jdbc.url"
                       value="jdbc:postgresql://localhost:5432/gestiondb"/>
-            <property name="javax.persistence.jdbc.user"     value="doudou"/>
-            <property name="javax.persistence.jdbc.password" value="doudou123"/>
-
+            <property name="javax.persistence.jdbc.user"
+                      value="doudou"/>
+            <property name="javax.persistence.jdbc.password"
+                      value="doudou123"/>
             <property name="hibernate.hbm2ddl.auto" value="update"/>
-            <property name="hibernate.show_sql"     value="true"/>
-            <property name="hibernate.format_sql"   value="true"/>
+            <property name="hibernate.show_sql"      value="true"/>
+            <property name="hibernate.format_sql"    value="true"/>
             <property name="hibernate.dialect"
                       value="org.hibernate.dialect.PostgreSQLDialect"/>
         </properties>
