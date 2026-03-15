@@ -1,14 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="CONTROLLER_NAME"
-            prefHeight="400.0" prefWidth="600.0">
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="sn.examen.controller.InscriptionController"
+      spacing="15" alignment="CENTER"
+      style="-fx-padding: 40; -fx-background-color: #F5F5F5;">
 
-</AnchorPane>
+    <Label text="Inscription"
+           style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #1565C0;"/>
+
+    <TextField fx:id="nomField"       promptText="Nom"       prefWidth="300"/>
+    <TextField fx:id="prenomField"    promptText="Prenom"    prefWidth="300"/>
+    <TextField fx:id="telephoneField" promptText="Telephone" prefWidth="300"/>
+    <TextField fx:id="emailField"     promptText="Email"     prefWidth="300"/>
+    <TextField fx:id="loginField"     promptText="Login"     prefWidth="300"/>
+    <PasswordField fx:id="passwordField" promptText="Mot de passe" prefWidth="300"/>
+
+    <Button text="S'inscrire" onAction="#sInscrire"
+            style="-fx-background-color: #1565C0; -fx-text-fill: white;
+                   -fx-font-size: 14px; -fx-pref-width: 300px;
+                   -fx-pref-height: 40px; -fx-font-weight: bold;"/>
+</VBox>

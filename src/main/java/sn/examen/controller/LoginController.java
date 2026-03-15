@@ -13,44 +13,38 @@ import java.util.List;
 
 public class LoginController {
 
-    @FXML private TextField loginField;
+    @FXML private TextField     loginField;
     @FXML private PasswordField passwordField;
 
-    private UtilisateurDAO UtilisateurDAO = new UtilisateurDAO();
+    private UtilisateurDAO utilisateurDAO = new UtilisateurDAO();
 
-    // Methode appelee quand on clique 'Se connecter'
     @FXML
     public void seConnecter() {
         String login = loginField.getText().trim();
         String pass  = passwordField.getText().trim();
 
-        // Validation des champs vides
         if (login.isEmpty() || pass.isEmpty()) {
-            showAlert(Alert.AlertType.WARNING, "Champs vides",
+            showAlert(Alert.AlertType.WARNING, "Attention",
                     "Veuillez remplir tous les champs.");
             return;
         }
 
-        // Verifier les identifiants en BD
-        Utilisateur Utilisateur = UtilisateurDAO.findByLoginPassword(login, pass);
+        Utilisateur u = utilisateurDAO.findByLoginPassword(login, pass);
 
-        if (Utilisateur == null) {
-            // ERREUR : utilisateur non trouve
-            showAlert(Alert.AlertType.ERROR, "Erreur de connexion",
+        if (u == null) {
+            showAlert(Alert.AlertType.ERROR, "Erreur",
                     "Login ou mot de passe incorrect");
         } else {
-            // SUCCES : verifier stock avant d'ouvrir l'appli
             verifierStockFaible();
             ouvrirEcranPrincipal();
         }
     }
 
-    // Alerte pour les produits dont quantite < 5
     private void verifierStockFaible() {
         List<Produit> lowStock = new ProduitDAO().findLowStock();
         if (!lowStock.isEmpty()) {
             StringBuilder sb = new StringBuilder(
-                    "ATTENTION ! Stock faible pour ces produits :\n\n");
+                    "ATTENTION ! Stock faible pour :\n\n");
             for (Produit p : lowStock) {
                 sb.append("  - ").append(p.getLibelle())
                         .append(" : ").append(p.getQuantite()).append(" unites\n");
@@ -59,38 +53,64 @@ public class LoginController {
         }
     }
 
-    // Ouvrir l'ecran principal
     private void ouvrirEcranPrincipal() {
         try {
-            FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource("/fxml/main.fxml"));
+            // ← Utilise getClass().getResource avec le bon chemin
+            java.net.URL url = getClass().getResource("/sn/examen/main.fxml");
+
+            // Affiche le chemin dans la console pour debug
+            System.out.println("Chemin main.fxml : " + url);
+
+            if (url == null) {
+                showAlert(Alert.AlertType.ERROR, "Erreur",
+                        "main.fxml introuvable ! Verifie qu'il est dans " +
+                                "src/main/resources/sn/examen/main.fxml");
+                return;
+            }
+
+            FXMLLoader loader = new FXMLLoader(url);
             Stage stage = new Stage();
             stage.setScene(new Scene(loader.load(), 900, 600));
             stage.setTitle("Ecran Principal");
             stage.show();
+
             // Fermer la fenetre de connexion
             ((Stage) loginField.getScene().getWindow()).close();
+
         } catch (Exception e) {
             e.printStackTrace();
+            showAlert(Alert.AlertType.ERROR, "Erreur",
+                    "Erreur ouverture main : " + e.getMessage());
         }
     }
 
-    // Ouvrir la fenetre d'inscription
     @FXML
     public void ouvrirInscription() {
         try {
-            FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource("/fxml/inscription.fxml"));
+            java.net.URL url = getClass().getResource("/sn/examen/inscription.fxml");
+
+            System.out.println("Chemin inscription.fxml : " + url);
+
+            if (url == null) {
+                showAlert(Alert.AlertType.ERROR, "Erreur",
+                        "inscription.fxml introuvable !");
+                return;
+            }
+
+            FXMLLoader loader = new FXMLLoader(url);
             Stage stage = new Stage();
-            stage.setScene(new Scene(loader.load(), 450, 500));
+            stage.setScene(new Scene(loader.load(), 450, 550));
             stage.setTitle("Inscription");
+            stage.setResizable(false);
             stage.show();
+
         } catch (Exception e) {
             e.printStackTrace();
+            showAlert(Alert.AlertType.ERROR, "Erreur",
+                    "Erreur ouverture inscription : " + e.getMessage());
         }
     }
 
-    // Methode utilitaire pour afficher les alertes
     private void showAlert(Alert.AlertType type, String title, String msg) {
         Alert alert = new Alert(type);
         alert.setTitle(title);
@@ -99,4 +119,3 @@ public class LoginController {
         alert.showAndWait();
     }
 }
-

@@ -9,9 +9,16 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        // Charge le fichier FXML de connexion
+
+        // Le chemin doit correspondre exactement à où est le fichier FXML
         FXMLLoader loader = new FXMLLoader(
-                getClass().getResource("/fxml/login.fxml"));
+                Main.class.getResource("/sn/examen/login.fxml"));
+
+        // Verification : si null, le fichier n'est pas trouvé
+        if (loader.getLocation() == null) {
+            throw new RuntimeException("login.fxml introuvable !");
+        }
+
         Scene scene = new Scene(loader.load(), 500, 400);
         primaryStage.setTitle("Application JavaFX - Examen");
         primaryStage.setScene(scene);
@@ -22,4 +29,3 @@ public class Main extends Application {
         launch(args);
     }
 }
-

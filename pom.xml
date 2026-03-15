@@ -37,6 +37,13 @@
             <version>6.2.7.Final</version>
         </dependency>
 
+        <!-- Log4j2 pour Hibernate -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>2.20.0</version>
+        </dependency>
+
         <!-- PostgreSQL -->
         <dependency>
             <groupId>org.postgresql</groupId>
