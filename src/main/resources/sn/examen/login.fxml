@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="sn.examen.controller.LoginController"
+      alignment="CENTER" spacing="20"
+      style="-fx-background-color: #1565C0; -fx-padding: 60;">
+
+    <!-- Titre -->
+    <Label text="Connexion"
+           style="-fx-font-size: 28px; -fx-text-fill: white; -fx-font-weight: bold;"/>
+
+    <!-- Champ Login -->
+    <TextField fx:id="loginField" promptText="Login"
+               style="-fx-pref-width: 300px; -fx-pref-height: 40px;
+                    -fx-font-size: 14px;"/>
+
+    <!-- Champ Mot de passe -->
+    <PasswordField fx:id="passwordField" promptText="Mot de passe"
+                   style="-fx-pref-width: 300px; -fx-pref-height: 40px;
+                        -fx-font-size: 14px;"/>
+
+    <!-- Bouton Connexion -->
+    <Button text="Se connecter" onAction="#seConnecter"
+            style="-fx-background-color: #4CAF50; -fx-text-fill: white;
+                 -fx-font-size: 14px; -fx-pref-width: 300px;
+                 -fx-pref-height: 40px; -fx-font-weight: bold;"/>
+
+    <!-- Bouton Inscription -->
+    <Button text="S'inscrire" onAction="#ouvrirInscription"
+            style="-fx-background-color: transparent; -fx-text-fill: white;
+                 -fx-font-size: 13px; -fx-underline: true;"/>
+
+</VBox>

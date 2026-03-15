@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="sn.examen.controller.ProduitController"
+      spacing="10" style="-fx-padding: 20;">
+
+    <Label text="Gestion des Produits"
+           style="-fx-font-size: 22px; -fx-font-weight: bold;"/>
+
+    <!-- Formulaire de saisie -->
+    <HBox spacing="10">
+        <TextField fx:id="libelleField"   promptText="Libelle"      prefWidth="150"/>
+        <TextField fx:id="quantiteField"  promptText="Quantite"     prefWidth="100"/>
+        <TextField fx:id="prixField"      promptText="Prix unitaire" prefWidth="120"/>
+        <ComboBox  fx:id="categorieCombo" promptText="Categorie"     prefWidth="140"/>
+    </HBox>
+
+    <!-- Boutons CRUD -->
+    <HBox spacing="10">
+        <Button text="Ajouter"    onAction="#ajouter"    style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+        <Button text="Modifier"   onAction="#modifier"   style="-fx-background-color: #2196F3; -fx-text-fill: white;"/>
+        <Button text="Supprimer"  onAction="#supprimer"  style="-fx-background-color: #f44336; -fx-text-fill: white;"/>
+        <Button text="Actualiser" onAction="#actualiser" style="-fx-background-color: #FF9800; -fx-text-fill: white;"/>
+    </HBox>
+
+    <!-- Barre de recherche -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Recherche :"/>
+        <TextField fx:id="searchField" promptText="Filtrer par libelle..."
+                   prefWidth="250" onKeyReleased="#rechercher"/>
+    </HBox>
+
+    <!-- Tableau -->
+    <TableView fx:id="produitTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colId"       text="ID"         prefWidth="50"/>
+            <TableColumn fx:id="colLibelle"  text="Libelle"    prefWidth="200"/>
+            <TableColumn fx:id="colQte"      text="Quantite"   prefWidth="100"/>
+            <TableColumn fx:id="colPrix"     text="Prix"       prefWidth="100"/>
+            <TableColumn fx:id="colCategorie" text="Categorie" prefWidth="150"/>
+        </columns>
+    </TableView>
+
+</VBox>
+

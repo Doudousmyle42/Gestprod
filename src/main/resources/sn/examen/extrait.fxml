@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="sn.examen.controller.ExtraitController"
+      spacing="30" alignment="CENTER"
+      style="-fx-padding: 60;">
+
+    <Label text="Extraire des Documents"
+           style="-fx-font-size: 22px; -fx-font-weight: bold;"/>
+
+    <!-- Bouton PDF -->
+    <Button text="Extraire la liste des produits (PDF)"
+            onAction="#extrairePDF"
+            style="-fx-background-color: #f44336; -fx-text-fill: white;
+                 -fx-font-size: 14px; -fx-pref-width: 350px;
+                 -fx-pref-height: 50px;"/>
+
+    <!-- Bouton Excel -->
+    <Button text="Extraire les stats par categorie (Excel)"
+            onAction="#extraireExcel"
+            style="-fx-background-color: #4CAF50; -fx-text-fill: white;
+                 -fx-font-size: 14px; -fx-pref-width: 350px;
+                 -fx-pref-height: 50px;"/>
+
+    <Label fx:id="statusLabel" style="-fx-text-fill: #4CAF50; -fx-font-size: 13px;"/>
+
+</VBox>
+

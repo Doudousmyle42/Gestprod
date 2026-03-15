@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="sn.examen.controller.MainController"
+            style="-fx-background-color: #F5F5F5;">
+
+    <!-- SIDEBAR GAUCHE -->
+    <left>
+        <VBox spacing="5" style="-fx-background-color: #1565C0;
+                             -fx-padding: 20; -fx-pref-width: 200;">
+
+            <!-- Logo -->
+            <Label text="MON ENTREPRISE"
+                   style="-fx-text-fill: white; -fx-font-size: 16px;
+                    -fx-font-weight: bold; -fx-padding: 0 0 20 0;"/>
+
+            <!-- Boutons navigation -->
+            <Button text="Statistiques" onAction="#showStatistique"
+                    style="-fx-background-color: transparent; -fx-text-fill: white;
+                     -fx-font-size: 14px; -fx-pref-width: 160px;
+                     -fx-alignment: CENTER-LEFT;"/>
+            <Button text="Produits" onAction="#showProduit"
+                    style="-fx-background-color: transparent; -fx-text-fill: white;
+                     -fx-font-size: 14px; -fx-pref-width: 160px;
+                     -fx-alignment: CENTER-LEFT;"/>
+            <Button text="Categories" onAction="#showCategorie"
+                    style="-fx-background-color: transparent; -fx-text-fill: white;
+                     -fx-font-size: 14px; -fx-pref-width: 160px;
+                     -fx-alignment: CENTER-LEFT;"/>
+            <Button text="Extraire Document" onAction="#showExtrait"
+                    style="-fx-background-color: transparent; -fx-text-fill: white;
+                     -fx-font-size: 14px; -fx-pref-width: 160px;
+                     -fx-alignment: CENTER-LEFT;"/>
+        </VBox>
+    </left>
+
+    <!-- CONTENU PRINCIPAL (change dynamiquement) -->
+    <center>
+        <StackPane fx:id="contentArea">
+            <Label text="Bienvenue !" style="-fx-font-size: 24px;"/>
+        </StackPane>
+    </center>
+
+</BorderPane>

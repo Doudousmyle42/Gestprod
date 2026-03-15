@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="sn.examen.controller.StatistiqueController"
+      spacing="20" style="-fx-padding: 20;">
+
+    <Label text="Statistiques" style="-fx-font-size: 22px; -fx-font-weight: bold;"/>
+
+    <HBox spacing="20">
+
+        <!-- Graphique CERCLE : produits par categorie -->
+        <VBox spacing="5" HBox.hgrow="ALWAYS">
+            <Label text="Produits par Categorie"
+                   style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+            <PieChart fx:id="pieChart" prefHeight="300"/>
+        </VBox>
+
+        <!-- Graphique BARRES : produits ajoutes par mois en 2024 -->
+        <VBox spacing="5" HBox.hgrow="ALWAYS">
+            <Label text="Produits ajoutes par mois (2024)"
+                   style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+            <BarChart fx:id="barChart" prefHeight="300">
+                <xAxis><CategoryAxis/></xAxis>
+                <yAxis><NumberAxis label="Nombre de produits"/></yAxis>
+            </BarChart>
+        </VBox>
+
+    </HBox>
+
+</VBox>
+
